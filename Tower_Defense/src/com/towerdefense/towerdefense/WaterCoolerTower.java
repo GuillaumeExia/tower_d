@@ -1,5 +1,5 @@
 package com.towerdefense.towerdefense;
 
-public class WaterCooler extends Tower {
+public class WaterCoolerTower extends Tower {
 
 }

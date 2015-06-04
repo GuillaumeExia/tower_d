@@ -1,5 +1,5 @@
 package com.towerdefense.towerdefense;
 
-public class FireWall extends Tower {
+public class VPNTower extends Tower {
 
 }
