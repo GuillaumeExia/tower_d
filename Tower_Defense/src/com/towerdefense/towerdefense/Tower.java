@@ -1,3 +1,4 @@
+package com.towerdefense.towerdefense;
 public class Tower {
 
 	private int cost;

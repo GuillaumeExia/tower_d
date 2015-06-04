@@ -1,3 +1,4 @@
+package com.towerdefense.towerdefense;
 public class Workstation implements canBeRepaired {
 
 	private int healthPoints;
