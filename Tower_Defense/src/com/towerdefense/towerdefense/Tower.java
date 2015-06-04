@@ -1,5 +1,6 @@
 package com.towerdefense.towerdefense;
-public class Tower {
+
+public abstract class Tower {
 
 	private int cost;
 

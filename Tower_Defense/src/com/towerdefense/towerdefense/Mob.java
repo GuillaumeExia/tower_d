@@ -1,5 +1,6 @@
 package com.towerdefense.towerdefense;
-public class Mob implements canDieMoveAttack {
+
+public abstract class Mob implements canDieMoveAttack {
 
 	private int healthPoints;
 
