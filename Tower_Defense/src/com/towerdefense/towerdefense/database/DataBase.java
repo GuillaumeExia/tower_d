@@ -19,6 +19,6 @@ public class DataBase {
 	}
 
 	public void save(Map map) {
-
+		return;
 	}
 }
