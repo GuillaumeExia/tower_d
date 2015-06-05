@@ -13,10 +13,10 @@ public class PanelGame extends JPanel {
 
 	public static Point mouse = new Point(0, 0);
 
-	public PanelGame(Frame frame) {
+	public PanelGame(Window window) {
 
-		frame.addMouseListener(new MouseHandler());
-		frame.addMouseMotionListener(new MouseHandler());
+		window.addMouseListener(new MouseHandler());
+		window.addMouseMotionListener(new MouseHandler());
 	}
 
 	@Override

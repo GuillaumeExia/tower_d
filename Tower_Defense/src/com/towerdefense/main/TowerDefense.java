@@ -1,11 +1,11 @@
 package com.towerdefense.main;
 
-import com.towerdefense.display.Frame;
+import com.towerdefense.display.Window;
 
 public class TowerDefense {
 
 	public static void main(String[] args) {
-		Frame frame = new Frame();
+		Window window = new Window();
 
 	}
 
