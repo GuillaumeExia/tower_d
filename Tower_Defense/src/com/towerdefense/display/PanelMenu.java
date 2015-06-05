@@ -25,8 +25,6 @@ public class PanelMenu extends JPanel implements ActionListener {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		this.setLayout(gridBagLayout);
 
 		GridBagConstraints gbc_btnPlay = new GridBagConstraints();
@@ -71,7 +69,7 @@ public class PanelMenu extends JPanel implements ActionListener {
 		String action = e.getActionCommand();
 
 		if (action.equals("Play")) {
-			// lancer le panel play
+
 		}
 		else if (action.equals("Load")) {
 			// lancer le panel load
