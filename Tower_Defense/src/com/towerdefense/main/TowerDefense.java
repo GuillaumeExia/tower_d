@@ -1,9 +1,11 @@
 package com.towerdefense.main;
 
+import com.towerdefense.display.Frame;
+
 public class TowerDefense {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Frame frame = new Frame();
 
 	}
 
