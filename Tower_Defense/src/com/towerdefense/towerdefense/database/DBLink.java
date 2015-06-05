@@ -15,11 +15,7 @@ public class DBLink {
 	private Statement statement = null;
 	ResultSet resultSet = null;
 
-	{
-
-	}
-
-	public ResultSet  public DBLink() {
+	public DBLink() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
