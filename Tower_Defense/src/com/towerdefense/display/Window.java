@@ -8,6 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import com.towerdefense.events.MouseHandler;
@@ -27,6 +30,12 @@ public class Window extends JFrame implements ActionListener {
 		cardManager.show(main, name);
 	}
 
+	private JMenuBar menuBar = new JMenuBar();
+	private JMenu game = new JMenu("Game");
+
+	private JMenuItem pause = new JMenuItem("Pause");
+	private JMenuItem save = new JMenuItem("Save");
+
 	public Window() {
 		main = new JPanel(cardManager = new CardLayout());
 		JPanel[] panels = new JPanel[3];
@@ -42,6 +51,8 @@ public class Window extends JFrame implements ActionListener {
 
 		this.add(main, BorderLayout.CENTER);
 
+		this.initMenuBar();
+		this.setJMenuBar(this.menuBar);
 		this.init();
 	}
 
@@ -58,5 +69,13 @@ public class Window extends JFrame implements ActionListener {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setContentPane(main);
 		this.setVisible(true);
+	}
+
+	private void initMenuBar() {
+		this.pause.setEnabled(false);
+		this.game.add(this.pause);
+		this.game.addSeparator();
+		this.game.add(this.save);
+		this.menuBar.add(this.game);
 	}
 }

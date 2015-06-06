@@ -17,6 +17,7 @@ public class PanelGame extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	public static Point mouse = new Point(0, 0);
 	public String nickname;
+
 	JLabel test = new JLabel("Je suis le panel game");
 
 	public PanelGame() {
@@ -37,4 +38,5 @@ public class PanelGame extends JPanel implements ActionListener {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 	}
+
 }

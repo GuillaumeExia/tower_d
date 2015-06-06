@@ -27,7 +27,7 @@ public class NicknameAsker extends JDialog implements ActionListener {
 		this.setTitle("Nickname");
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
-		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		this.setLayout(new FlowLayout());
 		nickname = new JTextField();
 		nickname.setColumns(10);
@@ -44,7 +44,7 @@ public class NicknameAsker extends JDialog implements ActionListener {
 		if (actionString.equals("Ok")) {
 			if (NicknameAsker.getNickname().getText().equals("")) {
 				this.optionPaneVerif = new JOptionPane();
-				this.optionPaneVerif.showMessageDialog(this, "Le pseudo est nul", "Erreur", JOptionPane.ERROR_MESSAGE);
+				this.optionPaneVerif.showMessageDialog(this, "Veuillez rentrer un pseudo!", "Erreur", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				System.out.println(NicknameAsker.getNickname().getText());
