@@ -35,22 +35,11 @@ public class Window extends JFrame implements ActionListener {
 
 	private JMenuItem pause = new JMenuItem("Pause");
 	private JMenuItem save = new JMenuItem("Save");
+	private JMenuItem exit = new JMenuItem("Exit");
 
 	public Window() {
-		main = new JPanel(cardManager = new CardLayout());
-		JPanel[] panels = new JPanel[3];
 
-		panels[0] = new PanelMenu();
-		main.add(panels[0], "panelMenu");
-
-		panels[1] = new PanelGame();
-		main.add(panels[1], "panelGame");
-
-		panels[2] = new PanelLoad();
-		main.add(panels[2], "panelLoad");
-
-		this.add(main, BorderLayout.CENTER);
-
+		this.initPanels();
 		this.initMenuBar();
 		this.setJMenuBar(this.menuBar);
 		this.init();
@@ -73,9 +62,36 @@ public class Window extends JFrame implements ActionListener {
 
 	private void initMenuBar() {
 		this.pause.setEnabled(false);
+		this.save.setEnabled(false);
 		this.game.add(this.pause);
 		this.game.addSeparator();
 		this.game.add(this.save);
+		this.game.addSeparator();
+
+		this.exit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				System.exit(0);
+			}
+		});
+		this.game.add(this.exit);
+
 		this.menuBar.add(this.game);
+	}
+
+	private void initPanels() {
+		main = new JPanel(cardManager = new CardLayout());
+		JPanel[] panels = new JPanel[3];
+
+		panels[0] = new PanelMenu();
+		main.add(panels[0], "panelMenu");
+
+		panels[1] = new PanelGame();
+		main.add(panels[1], "panelGame");
+
+		panels[2] = new PanelLoad();
+		main.add(panels[2], "panelLoad");
+
+		this.add(main, BorderLayout.CENTER);
 	}
 }
