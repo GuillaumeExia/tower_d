@@ -1,5 +1,5 @@
 package com.towerdefense.towerdefense;
 
-public class Tender extends Mob {
+public class Thunder extends Mob {
 
 }
