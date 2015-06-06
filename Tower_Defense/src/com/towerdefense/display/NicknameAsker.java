@@ -53,11 +53,4 @@ public class NicknameAsker extends JDialog implements ActionListener {
 		}
 	}
 
-	public String observNickname() {
-		int i = 1;
-
-		return null;
-
-	}
-
 }
