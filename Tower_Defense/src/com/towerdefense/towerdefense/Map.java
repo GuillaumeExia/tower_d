@@ -32,9 +32,6 @@ public class Map {
 				terrain[i][j] = new Grass();
 			}
 		}
-		if (terrain[5][9].getType() == 0) {
-			System.out.println("good");
-		}
 		towers = new ArrayList<Tower>();
 		mobs = new ArrayList<Mob>();
 
