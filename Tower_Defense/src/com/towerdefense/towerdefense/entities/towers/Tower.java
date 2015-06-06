@@ -1,4 +1,6 @@
-package com.towerdefense.towerdefense.entities;
+package com.towerdefense.towerdefense.entities.towers;
+
+import com.towerdefense.towerdefense.entities.EntityType;
 
 public abstract class Tower {
 

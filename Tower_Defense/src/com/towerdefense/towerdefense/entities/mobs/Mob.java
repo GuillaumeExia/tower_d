@@ -1,19 +1,16 @@
-package com.towerdefense.towerdefense.entities;
+package com.towerdefense.towerdefense.entities.mobs;
 
-public abstract class Mob implements canDieMoveAttack {
+import com.towerdefense.towerdefense.entities.CanDieMoveAttack;
+import com.towerdefense.towerdefense.entities.EntityType;
+
+public abstract class Mob implements CanDieMoveAttack {
 
 	private int healthPoints;
-
 	private int damageValue;
-
 	private int movementSpeed;
-
 	private int rangeValue;
-
 	private int reward;
-
 	private EntityType type;
-
 	private int protection;
 
 	@Override
@@ -29,31 +26,31 @@ public abstract class Mob implements canDieMoveAttack {
 	}
 
 	public int getDamageValue() {
-		return this.damageValue;
+		return damageValue;
 	}
 
 	public int getHealthPoints() {
-		return this.healthPoints;
+		return healthPoints;
 	}
 
 	public int getMovementSpeed() {
-		return this.movementSpeed;
+		return movementSpeed;
 	}
 
 	public int getProtection() {
-		return this.protection;
+		return protection;
 	}
 
 	public int getRangeValue() {
-		return this.rangeValue;
+		return rangeValue;
 	}
 
 	public int getReward() {
-		return this.reward;
+		return reward;
 	}
 
 	public EntityType getType() {
-		return this.type;
+		return type;
 	}
 
 	@Override

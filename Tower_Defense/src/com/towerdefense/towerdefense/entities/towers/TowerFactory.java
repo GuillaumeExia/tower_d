@@ -1,4 +1,4 @@
-package com.towerdefense.towerdefense.entities;
+package com.towerdefense.towerdefense.entities.towers;
 
 public class TowerFactory {
 

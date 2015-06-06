@@ -1,10 +1,11 @@
 package com.towerdefense.towerdefense.entities;
-public class Workstation implements canBeRepaired {
+
+public class Workstation implements CanBeRepaired {
 
 	private int healthPoints;
 
 	public int getHealthPoints() {
-		return this.healthPoints;
+		return healthPoints;
 	}
 
 	/**
