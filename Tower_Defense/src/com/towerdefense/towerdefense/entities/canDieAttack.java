@@ -1,4 +1,4 @@
-package com.towerdefense.towerdefense;
+package com.towerdefense.towerdefense.entities;
 public interface canDieAttack extends canDie, canAttack {
 
 }

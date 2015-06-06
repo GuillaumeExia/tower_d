@@ -2,6 +2,8 @@ package com.towerdefense.towerdefense;
 
 import java.util.ArrayList;
 
+import com.towerdefense.towerdefense.entities.Mob;
+import com.towerdefense.towerdefense.entities.Tower;
 import com.towerdefense.towerdefense.objects.Ground;
 
 public class Map {
