@@ -14,10 +14,42 @@ public class PanelMenu extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	JButton btnPlay = new JButton("Play");
 	JButton btnLoad = new JButton("Load");
-	JButton btnLeaderBoard = new JButton("LeaderBoard");
 	JButton btnExit = new JButton("Exit");
+	JButton btnLeaderBoard = new JButton("LeaderBoard");
 
 	public PanelMenu() {
+		this.initMenu();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String action = e.getActionCommand();
+
+		// TODO : Select nickname only when the game is save.
+
+		if (action.equals("Play")) {
+			NicknameAsker asker = new NicknameAsker();
+			Window.changePanel("panelGame");
+			this.repaint();
+			this.revalidate();
+		}
+		else if (action.equals("Load")) {
+			Window.changePanel("panelLoad");
+			this.repaint();
+			this.revalidate();
+		}
+		else if (action.equals("LeaderBoard")) {
+			Window.changePanel("panelLeaderBoard");
+			this.repaint();
+			this.revalidate();
+		}
+		else if (action.equals("Exit")) {
+			System.exit(0);
+		}
+
+	}
+
+	public void initMenu() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -58,33 +90,5 @@ public class PanelMenu extends JPanel implements ActionListener {
 		this.btnExit.setActionCommand("Exit");
 		this.add(this.btnExit, gbc_btnExit);
 		this.btnExit.addActionListener(this);
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		String action = e.getActionCommand();
-
-		// TODO : Select nickname only when the game is save.
-
-		if (action.equals("Play")) {
-			NicknameAsker asker = new NicknameAsker();
-			Window.changePanel("panelGame");
-			this.repaint();
-			this.revalidate();
-		}
-		else if (action.equals("Load")) {
-			Window.changePanel("panelLoad");
-			this.repaint();
-			this.revalidate();
-		}
-		else if (action.equals("LeaderBoard")) {
-			Window.changePanel("panelLeaderBoard");
-			this.repaint();
-			this.revalidate();
-		}
-		else if (action.equals("Exit")) {
-			System.exit(0);
-		}
-
 	}
 }

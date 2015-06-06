@@ -26,21 +26,22 @@ public class Window extends JFrame implements ActionListener {
 
 	public static JPanel main;
 
+	public static JMenuItem pause = new JMenuItem("Pause");
+
+	public static JMenuItem menu = new JMenuItem("Menu");
+
+	public static JMenuItem save = new JMenuItem("Save");
+
+	public static JMenuItem exit = new JMenuItem("Exit");
+
 	public static void changePanel(String name) {
 		cardManager.show(main, name);
 	}
 
 	private int nbrOfPanels = 4;
-
 	private JMenuBar menuBar = new JMenuBar();
-
 	private JMenu game = new JMenu("Game");
 	private JMenu window = new JMenu("Window");
-
-	private JMenuItem pause = new JMenuItem("Pause");
-	private JMenuItem menu = new JMenuItem("Menu");
-	private JMenuItem save = new JMenuItem("Save");
-	private JMenuItem exit = new JMenuItem("Exit");
 
 	public Window() {
 
@@ -66,28 +67,28 @@ public class Window extends JFrame implements ActionListener {
 	}
 
 	private void initMenuBar() {
-		this.pause.setEnabled(false);
-		this.save.setEnabled(false);
-		this.game.add(this.pause);
+		Window.pause.setEnabled(false);
+		Window.save.setEnabled(false);
+		this.game.add(Window.pause);
 		this.game.addSeparator();
-		this.game.add(this.save);
+		this.game.add(Window.save);
 
 		this.menuBar.add(this.game);
 
-		this.menu.addActionListener(new ActionListener() {
+		Window.menu.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Window.changePanel("panelMenu");
 			}
 		});
-		this.window.add(this.menu);
-		this.exit.addActionListener(new ActionListener() {
+		this.window.add(Window.menu);
+		Window.exit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				System.exit(0);
 			}
 		});
-		this.window.add(this.exit);
+		this.window.add(Window.exit);
 
 		this.menuBar.add(this.window);
 	}
