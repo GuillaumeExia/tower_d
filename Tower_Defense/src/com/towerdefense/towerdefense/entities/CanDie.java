@@ -1,5 +1,5 @@
 package com.towerdefense.towerdefense.entities;
-public interface canDie {
+public interface CanDie {
 
 	public abstract void die();
 

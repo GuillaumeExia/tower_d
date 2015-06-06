@@ -1,5 +1,5 @@
 package com.towerdefense.towerdefense.entities;
-public interface canAttack {
+public interface CanAttack {
 
 	public abstract void attack();
 

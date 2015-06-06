@@ -1,5 +1,5 @@
 package com.towerdefense.towerdefense.entities;
-public interface canBeRepaired {
+public interface CanBeRepaired {
 
 	public abstract void repair();
 
