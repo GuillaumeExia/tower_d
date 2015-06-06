@@ -17,27 +17,27 @@ public abstract class Tower {
 	private EntityType damageType;
 
 	public int getCost() {
-		return this.cost;
+		return cost;
 	}
 
 	public EntityType getDamageType() {
-		return this.damageType;
+		return damageType;
 	}
 
 	public int getDamageValue() {
-		return this.damageValue;
+		return damageValue;
 	}
 
 	public int getHealthPoints() {
-		return this.healthPoints;
+		return healthPoints;
 	}
 
 	public int getRangeValue() {
-		return this.rangeValue;
+		return rangeValue;
 	}
 
 	public int getReloadCooldown() {
-		return this.reloadCooldown;
+		return reloadCooldown;
 	}
 
 	public void setCost(int cost) {

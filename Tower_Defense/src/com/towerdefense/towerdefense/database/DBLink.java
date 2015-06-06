@@ -10,8 +10,8 @@ import java.sql.Statement;
 public class DBLink {
 
 	private String url = "jdbc:mysql://164.138.29.106/tower_defense";
-	private String user = "root";
-	private String password = "";
+	private String user = "nicolas";
+	private String password = "pnATC39ZjYvxen5Q";
 	private Connection connection = null;
 	private Statement statement = null;
 	ResultSet resultSet = null;
@@ -25,15 +25,19 @@ public class DBLink {
 		try {
 			if (statement != null) {
 				statement.close();
+				System.out.println("Statement Closed");
 			}
 			if (connection != null) {
 				connection.close();
+				System.out.println("Connection Closed");
 			}
 			if (resultSet != null) {
 				resultSet.close();
+				System.out.println("ResultSet Closed");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			System.out.println("Deconnection error");
 			e.printStackTrace();
 		}
 	}
@@ -90,16 +94,20 @@ public class DBLink {
 	public boolean open() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
+			System.out.println("JDBC Driver Loaded");
 			connection = DriverManager.getConnection(url, user, password);
+			System.out.println("Connected to the database");
 			statement = connection.createStatement();
+			System.out.println("Statement Created");
 		} catch (ClassNotFoundException e) {
+			System.out.println("Driver loading error");
 			e.printStackTrace();
 			return false;
 		} catch (SQLException e) {
+			System.out.println("Connection error");
 			e.printStackTrace();
 			return false;
 		}
-		System.out.println("Connection successfull");
 		return true;
 	}
 

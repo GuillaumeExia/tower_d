@@ -2,6 +2,7 @@ package com.towerdefense.towerdefense;
 
 import java.util.ArrayList;
 
+import com.towerdefense.towerdefense.database.DataBase;
 import com.towerdefense.towerdefense.entities.mobs.Mob;
 import com.towerdefense.towerdefense.entities.towers.Tower;
 import com.towerdefense.towerdefense.objects.Grass;
@@ -14,12 +15,15 @@ public class Map {
 	private Ground[][] terrain;
 	private ArrayList<Tower> towers;
 	private ArrayList<Mob> mobs;
+	private int spawnRate = 1;
+	private DataBase database;
 
 	public Map() {
 		initialization(12, 12, 1);
 	}
 
 	private void initialization(int width, int height, int id) {
+		database = new DataBase();
 		this.width = width;
 		this.height = height;
 		terrain = new Ground[width][height];
@@ -31,6 +35,9 @@ public class Map {
 		if (terrain[5][9].getType() == 0) {
 			System.out.println("good");
 		}
+		towers = new ArrayList<Tower>();
+		mobs = new ArrayList<Mob>();
+
 	}
 
 	public void nextWave() {

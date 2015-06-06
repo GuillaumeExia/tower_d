@@ -8,6 +8,9 @@ public class DataBase {
 	public DataBase() {
 		super();
 		database = new DBLink();
+		database.open();
+		System.out.println("Connection Successfull");
+		database.close();
 	}
 
 	public Map loadMap(int id) {
