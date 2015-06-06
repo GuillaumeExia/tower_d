@@ -10,7 +10,12 @@ import javax.swing.JTextField;
 
 public class NicknameAsker extends JDialog implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	private JTextField nickname;
+
+	private static JTextField nickname;
+
+	public static JTextField getNickname() {
+		return nickname;
+	}
 
 	private JButton validButton = new JButton("Ok");
 
@@ -21,9 +26,9 @@ public class NicknameAsker extends JDialog implements ActionListener {
 		this.setVisible(true);
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 		this.setLayout(new FlowLayout());
-		this.nickname = new JTextField();
-		this.nickname.setColumns(10);
-		this.add(this.nickname);
+		nickname = new JTextField();
+		nickname.setColumns(10);
+		this.add(nickname);
 		this.validButton.setActionCommand("Ok");
 		this.add(this.validButton);
 		this.validButton.addActionListener(this);
@@ -32,13 +37,8 @@ public class NicknameAsker extends JDialog implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String actionString = e.getActionCommand();
-		if (actionString.equals("Ok")) {
-			System.out.print(this.getNickname().getText());
+		if (actionString.equals("Ok") && (NicknameAsker.getNickname().getText() != null)) {
 			this.setVisible(false);
 		}
-	}
-
-	public JTextField getNickname() {
-		return this.nickname;
 	}
 }

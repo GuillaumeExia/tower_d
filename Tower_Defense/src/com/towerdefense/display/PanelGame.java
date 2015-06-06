@@ -16,14 +16,12 @@ public class PanelGame extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	public static Point mouse = new Point(0, 0);
+	public String nickname;
 	JLabel test = new JLabel("Je suis le panel game");
-
-	boolean disque = false;
 
 	public PanelGame() {
 		this.addMouseListener(new MouseHandler());
 		this.addMouseMotionListener(new MouseHandler());
-
 		this.setBackground(Color.CYAN);
 		this.setLayout(new BorderLayout());
 		this.add(this.test, BorderLayout.CENTER);
@@ -32,27 +30,13 @@ public class PanelGame extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String commande = e.getActionCommand();
 
-		if (commande.equals("tracer")) {
-			this.disque = true;
-		}
-		else if (commande.equals("effacer")) {
-			this.disque = false;
-		}
-		this.repaint();
 	}
 
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		if (this.disque) {
-			g.setColor(Color.RED);
-		}
-		else {
-			g.setColor(Color.CYAN);
-		}
-		g.fillOval(100, 50, 100, 100);
-
+		this.nickname = NicknameAsker.getNickname().getText();
+		System.out.println(this.nickname);
 	}
 }
