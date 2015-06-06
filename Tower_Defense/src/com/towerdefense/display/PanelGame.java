@@ -36,7 +36,5 @@ public class PanelGame extends JPanel implements ActionListener {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		this.nickname = NicknameAsker.getNickname().getText();
-		System.out.println(this.nickname);
 	}
 }

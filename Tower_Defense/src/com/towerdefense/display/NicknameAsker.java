@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class NicknameAsker extends JDialog implements ActionListener {
@@ -16,6 +17,8 @@ public class NicknameAsker extends JDialog implements ActionListener {
 	public static JTextField getNickname() {
 		return nickname;
 	}
+
+	public JOptionPane optionPaneVerif;
 
 	private JButton validButton = new JButton("Ok");
 
@@ -34,11 +37,27 @@ public class NicknameAsker extends JDialog implements ActionListener {
 		this.validButton.addActionListener(this);
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String actionString = e.getActionCommand();
-		if (actionString.equals("Ok") && (NicknameAsker.getNickname().getText() != null)) {
-			this.setVisible(false);
+		if (actionString.equals("Ok")) {
+			if (NicknameAsker.getNickname().getText().equals("")) {
+				this.optionPaneVerif = new JOptionPane();
+				this.optionPaneVerif.showMessageDialog(this, "Le pseudo est nul", "Erreur", JOptionPane.ERROR_MESSAGE);
+			}
+			else {
+				System.out.println(NicknameAsker.getNickname().getText());
+				this.setVisible(false);
+			}
 		}
 	}
+
+	public String observNickname() {
+		int i = 1;
+
+		return null;
+
+	}
+
 }
