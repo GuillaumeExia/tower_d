@@ -1,11 +1,8 @@
 package com.towerdefense.events;
 
-import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-
-import com.towerdefense.display.PanelMenu;
 
 public class MouseHandler implements MouseListener, MouseMotionListener {
 
@@ -35,7 +32,6 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		PanelMenu.mouse = new Point(e.getX(), e.getY());
 
 	}
 

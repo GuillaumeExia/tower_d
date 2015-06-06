@@ -12,17 +12,16 @@ import javax.swing.JPanel;
 
 import com.towerdefense.events.MouseHandler;
 
-public class PanelGame extends JPanel implements ActionListener {
+public class PanelLoad extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	public static Point mouse = new Point(0, 0);
-	public String nickname;
-	JLabel test = new JLabel("Je suis le panel game");
+	JLabel test = new JLabel("Je suis le panel load");
 
-	public PanelGame() {
+	public PanelLoad() {
 		this.addMouseListener(new MouseHandler());
 		this.addMouseMotionListener(new MouseHandler());
-		this.setBackground(Color.CYAN);
+		this.setBackground(Color.RED);
 		this.setLayout(new BorderLayout());
 		this.add(this.test, BorderLayout.CENTER);
 
@@ -36,7 +35,5 @@ public class PanelGame extends JPanel implements ActionListener {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		this.nickname = NicknameAsker.getNickname().getText();
-		System.out.println(this.nickname);
 	}
 }

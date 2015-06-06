@@ -1,10 +1,8 @@
 package com.towerdefense.display;
 
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,8 +12,6 @@ import javax.swing.JPanel;
 public class PanelMenu extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-
-	public static Point mouse = new Point(0, 0);
 	JButton btnPlay = new JButton("Play");
 	JButton btnLoad = new JButton("Load");
 	JButton btnLeaderBoard = new JButton("LeaderBoard");
@@ -25,8 +21,6 @@ public class PanelMenu extends JPanel implements ActionListener {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		this.setLayout(gridBagLayout);
 
 		GridBagConstraints gbc_btnPlay = new GridBagConstraints();
@@ -71,10 +65,15 @@ public class PanelMenu extends JPanel implements ActionListener {
 		String action = e.getActionCommand();
 
 		if (action.equals("Play")) {
-			// lancer le panel play
+			NicknameAsker asker = new NicknameAsker();
+			Window.changePanel("panelGame");
+			this.repaint();
+			this.revalidate();
 		}
 		else if (action.equals("Load")) {
-			// lancer le panel load
+			Window.changePanel("panelLoad");
+			this.repaint();
+			this.revalidate();
 		}
 		else if (action.equals("LeaderBoard")) {
 			// lancer le panel leaderboard
@@ -82,11 +81,6 @@ public class PanelMenu extends JPanel implements ActionListener {
 		else if (action.equals("Exit")) {
 			System.exit(0);
 		}
-
-	}
-
-	@Override
-	public void paintComponent(Graphics g) {
 
 	}
 }
