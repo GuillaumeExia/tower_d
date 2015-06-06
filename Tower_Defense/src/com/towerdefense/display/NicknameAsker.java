@@ -25,6 +25,7 @@ public class NicknameAsker extends JDialog implements ActionListener {
 	public NicknameAsker() {
 		this.setSize(100, 100);
 		this.setTitle("Nickname");
+		this.setAlwaysOnTop(true);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);

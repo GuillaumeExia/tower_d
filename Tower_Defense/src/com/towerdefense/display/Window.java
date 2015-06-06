@@ -22,18 +22,23 @@ public class Window extends JFrame implements ActionListener {
 	public static MouseHandler mouseEvent = new MouseHandler();
 	public static MouseHandler mouseMotionEvent = new MouseHandler();
 	public static Point mouse = new Point(0, 0);
-
 	private static CardLayout cardManager;
+
 	public static JPanel main;
 
 	public static void changePanel(String name) {
 		cardManager.show(main, name);
 	}
 
+	private int nbrOfPanels = 4;
+
 	private JMenuBar menuBar = new JMenuBar();
+
 	private JMenu game = new JMenu("Game");
+	private JMenu window = new JMenu("Window");
 
 	private JMenuItem pause = new JMenuItem("Pause");
+	private JMenuItem menu = new JMenuItem("Menu");
 	private JMenuItem save = new JMenuItem("Save");
 	private JMenuItem exit = new JMenuItem("Exit");
 
@@ -66,22 +71,30 @@ public class Window extends JFrame implements ActionListener {
 		this.game.add(this.pause);
 		this.game.addSeparator();
 		this.game.add(this.save);
-		this.game.addSeparator();
 
+		this.menuBar.add(this.game);
+
+		this.menu.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Window.changePanel("panelMenu");
+			}
+		});
+		this.window.add(this.menu);
 		this.exit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				System.exit(0);
 			}
 		});
-		this.game.add(this.exit);
+		this.window.add(this.exit);
 
-		this.menuBar.add(this.game);
+		this.menuBar.add(this.window);
 	}
 
 	private void initPanels() {
 		main = new JPanel(cardManager = new CardLayout());
-		JPanel[] panels = new JPanel[3];
+		JPanel[] panels = new JPanel[this.nbrOfPanels];
 
 		panels[0] = new PanelMenu();
 		main.add(panels[0], "panelMenu");
@@ -91,6 +104,9 @@ public class Window extends JFrame implements ActionListener {
 
 		panels[2] = new PanelLoad();
 		main.add(panels[2], "panelLoad");
+
+		panels[3] = new PanelLeaderBoard();
+		main.add(panels[3], "panelLeaderBoard");
 
 		this.add(main, BorderLayout.CENTER);
 	}
