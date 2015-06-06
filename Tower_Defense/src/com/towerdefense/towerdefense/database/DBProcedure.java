@@ -15,14 +15,14 @@ public abstract class DBProcedure {
 	}
 
 	public static String setSave() {
-		return "{? = call setsave[(?, ?)]}";
+		return "{call setsave[(?, ?)]}";
 	}
 
 	public static String setScore() {
-		return "{? = call setscore[(?, ?)]}";
+		return "{call setscore[(?, ?)]}";
 	}
 
 	public static String setTerrain() {
-		return "{? = call setterrain[(?, ?)]}";
+		return "{call setterrain[(?, ?)]}";
 	}
 }

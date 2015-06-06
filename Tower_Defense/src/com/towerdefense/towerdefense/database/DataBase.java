@@ -7,7 +7,7 @@ public class DataBase {
 
 	public DataBase() {
 		super();
-		// TODO Auto-generated constructor stub
+		database = new DBLink();
 	}
 
 	public Map loadMap(int id) {

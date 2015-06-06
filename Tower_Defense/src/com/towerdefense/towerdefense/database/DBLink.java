@@ -1,5 +1,6 @@
 package com.towerdefense.towerdefense.database;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -37,6 +38,55 @@ public class DBLink {
 		}
 	}
 
+	public ResultSet getSave() {
+		CallableStatement procedure;
+		ResultSet result = null;
+		try {
+			procedure = connection.prepareCall(DBProcedure.getSave(),
+					ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+
+			procedure.setString(1, "First parameter of the procedure");
+			procedure.execute();
+			result = procedure.getResultSet();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// TODO Add valid arguments
+		return result;
+	}
+
+	public ResultSet getScore() {
+		CallableStatement procedure;
+		ResultSet result = null;
+		try {
+			procedure = connection.prepareCall(DBProcedure.getScore(),
+					ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+			procedure.setString(1, "First parameter of the procedure");
+			procedure.execute();
+			result = procedure.getResultSet();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// TODO Add valid arguments
+		return result;
+	}
+
+	public ResultSet getTerrain() {
+		CallableStatement procedure;
+		ResultSet result = null;
+		try {
+			procedure = connection.prepareCall(DBProcedure.getTerrain(),
+					ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+			procedure.setString(1, "First parameter of the procedure");
+			procedure.execute();
+			result = procedure.getResultSet();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// TODO Add valid arguments
+		return result;
+	}
+
 	public boolean open() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -51,5 +101,41 @@ public class DBLink {
 		}
 		System.out.println("Connection successfull");
 		return true;
+	}
+
+	public void setSave() {
+		CallableStatement procedure;
+		try {
+			procedure = connection.prepareCall(DBProcedure.setSave());
+			procedure.setString(1, "First parameter of the procedure");
+			procedure.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// TODO Add valid arguments
+	}
+
+	public void setScore() {
+		CallableStatement procedure;
+		try {
+			procedure = connection.prepareCall(DBProcedure.setScore());
+			procedure.setString(1, "First parameter of the procedure");
+			procedure.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// TODO Add valid arguments
+	}
+
+	public void setTerrain() {
+		CallableStatement procedure;
+		try {
+			procedure = connection.prepareCall(DBProcedure.setTerrain());
+			procedure.setString(1, "First parameter of the procedure");
+			procedure.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// TODO Add valid arguments
 	}
 }
