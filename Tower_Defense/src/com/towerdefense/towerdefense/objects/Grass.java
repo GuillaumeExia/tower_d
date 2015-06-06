@@ -14,7 +14,7 @@ public class Grass extends Ground {
 	public Grass() {
 		super();
 		try {
-			setImage(ImageIO.read(new File("res/images/terrain/herbe.png")));
+			setImage(ImageIO.read(new File("res/images/terrain/grass.png")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
