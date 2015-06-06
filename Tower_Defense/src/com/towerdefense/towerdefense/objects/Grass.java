@@ -6,15 +6,23 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Grass extends Ground {
+	public static int GROUND_TYPE = 0;
+	public static boolean CONSTRUCTIBLE = false;
+	public static boolean WALKABLE = false;
+	public static boolean SPAWNABLE = false;
 
 	public Grass() {
 		super();
 		try {
-			setImage(ImageIO.read(new File("images/terrain/herbe.png")));
+			setImage(ImageIO.read(new File("res/images/terrain/herbe.png")));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		setType(GROUND_TYPE);
+		setConstructible(CONSTRUCTIBLE);
+		setWalkable(WALKABLE);
+		setSpawnable(SPAWNABLE);
+
 	}
 
 }
