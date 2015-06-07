@@ -4,16 +4,22 @@ import java.awt.Image;
 
 public abstract class Ground {
 	private Image image;
-	private int type;
+    private int x;
+    private int y;
+    private int type;
 	private boolean constructible;
 	private boolean walkable;
 	private boolean spawnable;
 
-	public Ground() {
-		super();
-	}
+	public Ground() {}
 
-	public Image getImage() {
+    public Ground(int x, int y, int type) {
+        this.x = x;
+        this.y = y;
+        this.type = type;
+    }
+
+    public Image getImage() {
 		return image;
 	}
 
@@ -37,7 +43,15 @@ public abstract class Ground {
 		this.constructible = constructible;
 	}
 
-	public void setImage(Image image) {
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setImage(Image image) {
 		this.image = image;
 	}
 

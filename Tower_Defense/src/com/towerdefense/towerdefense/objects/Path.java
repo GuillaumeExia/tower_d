@@ -1,27 +1,19 @@
 package com.towerdefense.towerdefense.objects;
 
-import java.io.File;
-import java.io.IOException;
+import com.towerdefense.towerdefense.GlobalVariables;
 
-import javax.imageio.ImageIO;
+import java.awt.*;
 
-public class Path extends Ground {
-	public static int GROUND_TYPE = 1;
-	public static boolean CONSTRUCTIBLE = false;
-	public static boolean WALKABLE = true;
-	public static boolean SPAWNABLE = false;
+public class Path extends Ground{
+public static int GROUND_TYPE = 2;
+public static Rectangle SPRITE_RECTANGLE = new Rectangle(0, 0, 32, 32);
+//public static boolean CONSTRUCTIBLE = false;
+//public static boolean WALKABLE = false;
+//public static boolean SPAWNABLE = false;
 
-	public Path() {
-		super();
-		try {
-			setImage(ImageIO.read(new File("res/images/terrain/path.png")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		setType(GROUND_TYPE);
-		setConstructible(CONSTRUCTIBLE);
-		setWalkable(WALKABLE);
-		setSpawnable(SPAWNABLE);
+    public Path(int x, int y) {
+        super(x, y, GROUND_TYPE);
 
-	}
+        this.setImage(GlobalVariables.getSprite().getSubimage(SPRITE_RECTANGLE.x, SPRITE_RECTANGLE.y, SPRITE_RECTANGLE.width, SPRITE_RECTANGLE.height));
+    }
 }

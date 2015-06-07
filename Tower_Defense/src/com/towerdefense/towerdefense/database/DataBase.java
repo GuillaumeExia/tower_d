@@ -6,7 +6,7 @@ public class DataBase {
 	private DBLink database;
 
 	public DataBase() {
-		super();
+		//super();
 		database = new DBLink();
 		database.open();
 		System.out.println("Connection Successfull");

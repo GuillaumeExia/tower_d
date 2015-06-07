@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.towerdefense.events.MouseHandler;
+import com.towerdefense.towerdefense.GlobalVariables;
 
 public class PanelGame extends JPanel implements ActionListener {
 
@@ -40,6 +41,7 @@ public class PanelGame extends JPanel implements ActionListener {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+        GlobalVariables.selectedMap.drawTerrain(g);
 	}
 
 }
