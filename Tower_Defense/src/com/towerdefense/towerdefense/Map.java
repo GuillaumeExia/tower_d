@@ -8,6 +8,7 @@ import com.towerdefense.towerdefense.database.DataBase;
 import com.towerdefense.towerdefense.entities.mobs.Mob;
 import com.towerdefense.towerdefense.entities.mobs.MobFactory;
 import com.towerdefense.towerdefense.entities.towers.Tower;
+import com.towerdefense.towerdefense.entities.towers.TowerFactory;
 import com.towerdefense.towerdefense.objects.Ground;
 
 public class Map {
@@ -74,11 +75,12 @@ public class Map {
 		this.id = id;
 		database = new DataBase();
 		mobs = new ArrayList<Mob>();
+		towers = new ArrayList<Tower>();
 	}
 
 	public void nextWave() {
-
 		wave++;
+		spawnMobs();
 	}
 
 	public boolean spawnMob(final int choice) {
@@ -94,6 +96,21 @@ public class Map {
 	}
 
 	public void spawnMobs() {
+		int mobAmount = 0;
+		int amountAtStart = 3;
+		double multiplier = 1.3;
+		mobAmount = (int) (amountAtStart * Math.pow(multiplier, wave));
+		for (int i = 0; i < mobAmount; i++) {
+			spawnMob(-1);
+		}
+	}
 
+	public boolean spawnTower(final int choice) {
+		if ((choice <= TowerFactory.TOWER_TYPE_AMOUNT) && (choice >= 0)) {
+			towers.add(TowerFactory.createTower(choice));
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
