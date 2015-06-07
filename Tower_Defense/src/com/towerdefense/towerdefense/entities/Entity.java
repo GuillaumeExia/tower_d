@@ -11,4 +11,20 @@ public abstract class Entity implements CanDieAttack {
 	private int cooldown;
 	private Image image;
 
+	public int getIdentifier() {
+		return identifier;
+	}
+
+	public EntityType getType() {
+		return type;
+	}
+
+	public void setIdentifier(int identifier) {
+		this.identifier = identifier;
+	}
+
+	public void setType(EntityType type) {
+		this.type = type;
+	}
+
 }
