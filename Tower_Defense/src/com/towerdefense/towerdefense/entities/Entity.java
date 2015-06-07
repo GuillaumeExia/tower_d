@@ -1,5 +1,14 @@
 package com.towerdefense.towerdefense.entities;
 
-public class Entity {
+import java.awt.Image;
+
+public abstract class Entity implements CanDieAttack {
+	private int health;
+	private int damageValue;
+	private int rangeValue;
+	private EntityType type;
+	private int identifier;
+	private int cooldown;
+	private Image image;
 
 }

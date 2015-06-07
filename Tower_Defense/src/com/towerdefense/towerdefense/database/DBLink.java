@@ -1,16 +1,20 @@
 package com.towerdefense.towerdefense.database;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
 import com.towerdefense.towerdefense.Map;
 import com.towerdefense.towerdefense.objects.Grass;
 import com.towerdefense.towerdefense.objects.Ground;
 import com.towerdefense.towerdefense.objects.Path;
 import com.towerdefense.towerdefense.objects.Spawnpoint;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.concurrent.Callable;
-
-public class DBLink {
+class DBLink {
 
 	private String url = "jdbc:mysql://164.138.29.106/tower_defense";
 	private String user = "guillaume";
@@ -41,78 +45,85 @@ public class DBLink {
 		}
 	}
 
+	public java.sql.ResultSet executeQuery(String query) {
+
+		try {
+			return statement.executeQuery(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public Connection getConnection() {
+		return connection;
+	}
+
+	public ArrayList<Ground> mapSelection(int id) {
+		open();
+		ArrayList<Ground> groundList = new ArrayList();
+		try {
+			CallableStatement cs = connection.prepareCall(DBProcedure
+					.loadTerrain());
+			cs.setInt(1, id);
+			ResultSet rs = cs.executeQuery();
+			while (rs.next()) {
+				switch (rs.getInt("TYPE")) {
+				case 1:
+					groundList.add(new Grass(rs.getInt("X"), rs.getInt("Y")));
+					break;
+				case 2:
+					groundList.add(new Path(rs.getInt("X"), rs.getInt("Y")));
+					break;
+				case 3:
+					groundList.add(new Spawnpoint(rs.getInt("X"), rs
+							.getInt("Y")));
+					break;
+				// case 4 : new Workstation
+				}
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		close();
+		return groundList;
+	}
+
 	public boolean open() {
-        if(connection == null) {
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                connection = DriverManager.getConnection(url, user, password);
-                statement = connection.createStatement();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-                return false;
-            } catch (SQLException e) {
-                e.printStackTrace();
-                return false;
-            }
-        }
+		if (connection == null) {
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				connection = DriverManager.getConnection(url, user, password);
+				statement = connection.createStatement();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				return false;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
+		}
 		System.out.println("Connection successfull");
 		return true;
 	}
 
-    public java.sql.ResultSet executeQuery(String query){
-
-        try {
-            return this.statement.executeQuery(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public Connection getConnection() {
-        return connection;
-    }
-
-    public ArrayList<Map> selectAllMapsProc(){
-        open();
-        ArrayList<Map> mapList= new ArrayList();
-        try {
-            CallableStatement cs = connection.prepareCall(DBProcedure.selectAllMaps());
-            ResultSet rs = cs.executeQuery();
-            while(rs.next()){
-                mapList.add(new Map(rs.getString("NAME"), rs.getInt("WIDTH"), rs.getInt("HEIGHT"), rs.getInt("ID_MAP")));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        close();
-        return mapList;
-    }
-
-    public ArrayList<Ground> mapSelection(int id){
-        open();
-        ArrayList<Ground> groundList= new ArrayList();
-        try {
-            CallableStatement cs = connection.prepareCall(DBProcedure.loadTerrain());
-            cs.setInt(1, id);
-            ResultSet rs = cs.executeQuery();
-            while(rs.next()) {
-                switch(rs.getInt("TYPE")){
-                    case 1 : groundList.add(new Grass(rs.getInt("X"), rs.getInt("Y")));break;
-                    case 2 : groundList.add(new Path(rs.getInt("X"), rs.getInt("Y")));break;
-                    case 3 : groundList.add(new Spawnpoint(rs.getInt("X"), rs.getInt("Y")));break;
-                    // case 4 : new Workstation
-                }
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        close();
-        return groundList;
-    }
-
-
-
+	public ArrayList<Map> selectAllMapsProc() {
+		open();
+		ArrayList<Map> mapList = new ArrayList();
+		try {
+			CallableStatement cs = connection.prepareCall(DBProcedure
+					.selectAllMaps());
+			ResultSet rs = cs.executeQuery();
+			while (rs.next()) {
+				mapList.add(new Map(rs.getString("NAME"), rs.getInt("WIDTH"),
+						rs.getInt("HEIGHT"), rs.getInt("ID_MAP")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		close();
+		return mapList;
+	}
 
 }

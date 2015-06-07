@@ -1,67 +1,99 @@
 package com.towerdefense.towerdefense;
 
-import com.towerdefense.towerdefense.database.DBLink;
+import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.Random;
+
+import com.towerdefense.towerdefense.database.DataBase;
 import com.towerdefense.towerdefense.entities.mobs.Mob;
+import com.towerdefense.towerdefense.entities.mobs.MobFactory;
 import com.towerdefense.towerdefense.entities.towers.Tower;
 import com.towerdefense.towerdefense.objects.Ground;
 
-import java.awt.*;
-import java.util.ArrayList;
-
 public class Map {
-	private int width;
-	private int height;
-	private String name;
-    private int id;
-	//private Ground[][] terrain;
-    private ArrayList<Ground> grounds;
+	private int width = 10;
+	private int height = 10;
+	private String name = "DEFAULT";
+	private int id = -1;
+	private int wave = 0;
+	// private Ground[][] terrain;
+	private ArrayList<Ground> grounds;
 	private ArrayList<Tower> towers;
 	private ArrayList<Mob> mobs;
+	private DataBase database;
 
-	public Map(){
+	public Map() {
+		super();
+	}
 
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public Map(String name, int width, int height, int id) {
-        this.name = name;
-        this.width = width;
-        this.height = height;
-        this.id = id;
+	public Map(String name, int width, int height, int id) {
+		initialization(name, width, height, id);
 
 	}
 
-	private void initialization(int width, int height, int id) {
+	public void drawTerrain(Graphics g) {
+		fetchTerrain();
+		for (Ground ground : grounds) {
+			g.drawImage(ground.getImage(), ground.getX() * 32,
+					ground.getY() * 32, null);
+		}
+	}
+
+	public void fetchTerrain() {
+		if (grounds == null) {
+			grounds = database.mapSelection(id);
+		}
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public Mob getRandomMob() {
+		Random random = new Random();
+		return MobFactory.createMob(random
+				.nextInt(MobFactory.MOB_TYPE_AMOUNT + 1));
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	private void initialization(String name, int width, int height, int id) {
+		this.name = name;
 		this.width = width;
 		this.height = height;
+		this.id = id;
+		database = new DataBase();
+		mobs = new ArrayList<Mob>();
 	}
 
-    public void fetchTerrain(){
-        if(this.grounds == null){
-            DBLink dbLink = new DBLink();
-            this.grounds = dbLink.mapSelection(this.id);
-        }
-    }
+	public void nextWave() {
 
-    public void drawTerrain(Graphics g){
-        fetchTerrain();
-        for(Ground ground : grounds){
-            g.drawImage(ground.getImage(), ground.getX()*32, ground.getY()*32, null);
-        }
-    }
+		wave++;
+	}
+
+	public boolean spawnMob(final int choice) {
+		if (choice == -1) {
+			mobs.add(getRandomMob());
+			return true;
+		} else if ((choice <= MobFactory.MOB_TYPE_AMOUNT) && (choice >= 0)) {
+			mobs.add(MobFactory.createMob(choice));
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void spawnMobs() {
+
+	}
 }
